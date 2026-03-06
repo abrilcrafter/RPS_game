@@ -10,7 +10,7 @@ public enum handMovements
 }
 namespace RPS_game
 {
-    internal class Class3
+    internal class GameMovesNames
     {
         public static String GameMovements(int gameMovements)
         {
