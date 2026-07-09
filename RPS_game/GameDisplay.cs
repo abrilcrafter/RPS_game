@@ -10,7 +10,8 @@ namespace RPS_game
         {
 
             Random random = new Random();
-
+            int winCount = 0;
+            int loseCount = 0;
 
             string userChoiceString = GameMovesNames.GameMovements(userChoiceNumber);
 
@@ -38,12 +39,18 @@ namespace RPS_game
             else if (userChoiceNumber == 1 && p_Choice == 3 || userChoiceNumber == 2 && p_Choice == 1 || userChoiceNumber == 3 && p_Choice == 2) 
             {
                 Console.WriteLine("You win!");
+                winCount++;
+            
             }
             else
             {
                 Console.WriteLine("The program wins!");
+                loseCount++;
+
             }
-               
+
+           // FileHandling.addWins();
         }
+
     }
 }
