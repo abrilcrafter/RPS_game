@@ -6,6 +6,7 @@ namespace RPS_game;
 
    public static class JsonHelper
     {
+
     private static JsonSerializerOptions options = new JsonSerializerOptions
     {
         WriteIndented = true
@@ -22,22 +23,32 @@ namespace RPS_game;
                 Directory.CreateDirectory(directory);
             }
 
-            string json = JsonSerializer.Serialize(points, options);
+            var json = JsonSerializer.Serialize(points, options);
             File.WriteAllText(filePath, json);
         }catch(Exception e)
         {
             throw new Exception($"Error saving to JSON file: {e.Message}", e);
         }
     }
-    public static void loadScores(string filePath)
+
+    //
+    public static ScoreData loadScores(string filePath)
     {
 
         if (!File.Exists(filePath))
         {
-            throw new FileNotFoundException();
+            throw new FileNotFoundException("File does not exist!");
         }
 
-        string json = File.ReadAllText(filePath);
+        var json = File.ReadAllText(filePath);
+        ScoreData scores = JsonSerializer.Deserialize<ScoreData>(json, options);
+
+        if(scores == null)
+        {
+            throw new Exception("Deserialized scores are null");
+        }
+
+        return scores;
     }
 
         //string filePath = @"C:\Users\abril\source\repos\RPS_game\results.txt";
@@ -57,7 +68,7 @@ namespace RPS_game;
         //else { Console.WriteLine("Error with creating or reading file content"); }
         
 
-    }
+    
     //public static void addWins()
     //{
 
@@ -65,10 +76,10 @@ namespace RPS_game;
     //    string filePath = @"C:\Users\abril\source\repos\RPS_game\results.txt";
 
     //    var text = new StringBuilder();
-    //    foreach(string s in File.ReadAllLines(filePath))
+    //    foreach (string s in File.ReadAllLines(filePath))
     //    {
     //        text.AppendLine(s.Replace("Player: ", "Player: " + test));
-           
+
 
     //    }
     //    using (var file = new StreamWriter(File.Create(filePath)))
@@ -76,6 +87,6 @@ namespace RPS_game;
     //        file.Write(text.ToString());
     //    }
 
-    //}
+    }
 
 

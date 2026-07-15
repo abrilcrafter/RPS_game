@@ -46,7 +46,7 @@ namespace RPS_game
                         
                 }
                 GameDisplay.Gameplay(userChoiceNum);
-                        quitOrContinue = InputValidator.CheckStrings("Continue game? (y/n)");
+                quitOrContinue = InputValidator.CheckStrings("Continue game? (y/n)");
                 //FileHandling.FileCreation();
             }
             Console.WriteLine("Bye Thank you for playing!\n");

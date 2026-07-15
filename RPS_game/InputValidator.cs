@@ -39,20 +39,7 @@ namespace RPS_game
                 }
             }
         }  
-        //public static int CheckValidInt(int userChoiceNum)
-        //{
-        //    while (true)
-        //    {
-        //        try
-        //        {
 
-        //        }
-        //        catch()
-        //        {
-
-        //        }
-        //    }
-        //}
         public static bool CheckNumberRange(int userChoiceNum)
         {
 
