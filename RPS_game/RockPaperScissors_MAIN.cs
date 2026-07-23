@@ -9,11 +9,15 @@ namespace RPS_game
 
             String userChoice;
             String quitOrContinue = "y";
-          
+            String? username = null;
 
-            // FileHandling.FileCreation();
 
             Console.WriteLine("Rock Paper Scissors!");
+
+            Console.WriteLine("ENTER A USERNAME, HUMAN: ");
+            username = Console.ReadLine();
+            
+
             Console.WriteLine("Press any key to start...");
 
             Console.ReadKey(true);
@@ -45,11 +49,14 @@ namespace RPS_game
                     }
                         
                 }
-                GameDisplay.Gameplay(userChoiceNum);
+                GameDisplay.Gameplay(userChoiceNum, username);
                 quitOrContinue = InputValidator.CheckStrings("Continue game? (y/n)");
                 //FileHandling.FileCreation();
             }
             Console.WriteLine("Bye Thank you for playing!\n");
+
+            //Console.WriteLine("Human overall score: " +  );
+            //Console.WriteLine("Computer overall score: " + );
         }
     }
 }
