@@ -10,15 +10,21 @@ namespace RPS_game
             String userChoice;
             String quitOrContinue = "y";
             String? username = null;
+            string computerName = System.Environment.MachineName;
+
+
 
 
             Console.WriteLine("Rock Paper Scissors!");
 
             Console.WriteLine("ENTER A USERNAME, HUMAN: ");
             username = Console.ReadLine();
-            
+
+         
 
             Console.WriteLine("Press any key to start...");
+                ScoreData computer = new ScoreData(computerName);
+                ScoreData player = new ScoreData(username);
 
             Console.ReadKey(true);
 
@@ -31,6 +37,8 @@ namespace RPS_game
 
                 bool validNumRange = false;
                 int userChoiceNum = 0;
+                
+              
 
                 while (!validNumRange)
                 {
@@ -49,7 +57,9 @@ namespace RPS_game
                     }
                         
                 }
-                GameDisplay.Gameplay(userChoiceNum, username);
+               
+
+                GameDisplay.Gameplay(userChoiceNum, player, computer);
                 quitOrContinue = InputValidator.CheckStrings("Continue game? (y/n)");
                 //FileHandling.FileCreation();
             }
@@ -58,5 +68,7 @@ namespace RPS_game
             //Console.WriteLine("Human overall score: " +  );
             //Console.WriteLine("Computer overall score: " + );
         }
+  
+
     }
 }

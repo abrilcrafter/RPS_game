@@ -6,20 +6,14 @@ namespace RPS_game
 {
     internal class GameDisplay
     {
-        public static void Gameplay(int userChoiceNumber, string userName)
+        public static void Gameplay(int userChoiceNumber, ScoreData player, ScoreData computer)
         {
 
        
             Random random = new Random();
             string filePath = @"C:\Users\abril\source\repos\RPS_game\scoreboard.json";
-            string computerName = System.Environment.MachineName;
-
-            ScoreData computer = new ScoreData(computerName);
-            ScoreData player = new ScoreData(userName);
-
+    
             // ScoreData scoreSavedData = JsonHelper.loadScores(filePath);
-
-
 
             string userChoiceString = GameMovesNames.GameMovements(userChoiceNumber);
 
@@ -40,36 +34,40 @@ namespace RPS_game
             if (userChoiceNumber == p_Choice)
             {
                 Console.WriteLine("Draw! Continuing..");
-                Console.WriteLine("No points awarded");
+                Console.WriteLine("No totalPoints awarded");
             }
 
             else if (userChoiceNumber == 1 && p_Choice == 3 || userChoiceNumber == 2 && p_Choice == 1 || userChoiceNumber == 3 && p_Choice == 2)
             {
-                player.AddPoint(1);
+                player.AddPoint();
                 Console.WriteLine("You win!");
-
+                
      
-
-               Console.WriteLine("Your current win count: " + player.points);
+               Console.WriteLine("Your current win count: " + player.totalPoints);
             
 
             }
             else
             {
-                computer.AddPoint(1);
+                computer.AddPoint();
                 Console.WriteLine("The program wins!");
+
                
-               Console.WriteLine("Program's current win count: " + computer.points);
+               Console.WriteLine("Program's current win count: " + computer.totalPoints);
                
 
             }
 
 
-   // JsonHelper.saveScores(filePath, scoreData.humanScore);
+            // JsonHelper.saveScores(filePath, scoreData.humanScore);
            //  JsonHelper.saveScores(filePath, scoreData.computerScore);
            
         }
-       
+        static void displayFinalScore(int finalScore)
+        {
+           
+        }
+
 
     }
 }

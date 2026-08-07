@@ -3,18 +3,18 @@ using System.Text.Json.Serialization;
 public class ScoreData
 {  public string userName
     { get; private set; }
-    public int points
+    public int totalPoints
     { get; private set; }
 
     public ScoreData(string userName)
     {
-        this.userName = userName; 
-        points = 0;
+        this.userName = userName;
+        totalPoints = 0;
     }
 
-    public void AddPoint(int currentPoints)
+    public void AddPoint()
     {
-        points += currentPoints;
+        totalPoints++;
       
     }
 }
