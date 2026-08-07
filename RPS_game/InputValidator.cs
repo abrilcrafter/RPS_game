@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 
 namespace RPS_game
@@ -10,21 +11,25 @@ namespace RPS_game
         {
             while (true)
             {
-               
                 Console.Write("\n" + prompt);
 
                 string numberChoice = Console.ReadLine();
                 try
                 {
-                    if (!string.IsNullOrEmpty(numberChoice))
-                    { 
-                        
-                        return numberChoice;
+                    if (int.TryParse(numberChoice, out int number))
+                    {
+                         if (!string.IsNullOrEmpty(numberChoice))
+                        {
+
+                            return numberChoice;
+                        }
                     }
-                    else
+                     else
                     {
                         throw new ArgumentNullException("This input cannot be empty!");
-                    }
+                    } 
+                   
+                        
                 }
                 catch (ArgumentNullException e)
                 {
@@ -33,28 +38,22 @@ namespace RPS_game
                     }
                 }
             }
-        }
+        }  
+
         public static bool CheckNumberRange(int userChoiceNum)
         {
-       
-              
-                    if (userChoiceNum < 0 || userChoiceNum > 3)
-                    {
-                   
-                    return false;   
-                  //  throw new ArgumentOutOfRangeException("Input out of range");
-                    }
-                    else
-                    {
-                    return true;
-                    }
-           
-            
-        }
 
+            if (userChoiceNum <= 0 || userChoiceNum > 3)
+            { 
+                return false;
+            }
+            return true;
+       
+        }
+ 
         public static String CheckStrings(String prompt)
         {
-            while(true)
+            while (true)
             {
                 Console.WriteLine(prompt);
                 string choice = Console.ReadLine().Trim();
@@ -66,10 +65,8 @@ namespace RPS_game
                 }
                 else
                 {
-                     Console.WriteLine("Please enter (y/n): " );
+                    Console.WriteLine("Please enter (y/n): ");
                 }
-  
-
 
             }
         }
