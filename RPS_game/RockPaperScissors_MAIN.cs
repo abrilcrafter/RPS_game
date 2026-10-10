@@ -11,7 +11,7 @@ namespace RPS_game
       
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
-        Application.Run(new Form1());
+        Application.Run(new RPS_Form());
 
             String userChoice;
             String quitOrContinue = "y";
@@ -21,14 +21,14 @@ namespace RPS_game
 
 
 
-            Console.WriteLine("----Rock Paper Scissors!----\n");
+          //  Console.WriteLine("----Rock Paper Scissors!----\n");
 
-            Console.Write("ENTER A USERNAME, HUMAN: ");
+          //  Console.Write("ENTER A USERNAME, HUMAN: ");
             username = Console.ReadLine();
 
          
 
-            Console.WriteLine("\nPress any key to start...");
+       //     Console.WriteLine("\nPress any key to start...");
 
                 ScoreData computer = new ScoreData(computerName);
                 ScoreData player = new ScoreData(username);
@@ -36,7 +36,7 @@ namespace RPS_game
           //  Console.ReadKey(true);
 
 
-            Console.WriteLine();
+         //   Console.WriteLine();
 
 
             while (quitOrContinue == "y")
@@ -65,8 +65,8 @@ namespace RPS_game
                         
                 }
                
-
-                GameDisplay.Gameplay(userChoiceNum, player, computer);
+               
+                GameDisplay.Gameplay(userChoiceNum);
                 quitOrContinue = InputValidator.CheckStrings("\nContinue game? (y/n)");
                 //FileHandling.FileCreation();
             }
