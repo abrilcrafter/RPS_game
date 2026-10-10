@@ -3,9 +3,15 @@
 namespace RPS_game
 {
     class RockPaperScissors_MAIN
-    {
+    {  
+        [STAThread]
         static void Main(string[] args)
         {
+           
+      
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        Application.Run(new Form1());
 
             String userChoice;
             String quitOrContinue = "y";
@@ -15,18 +21,19 @@ namespace RPS_game
 
 
 
-            Console.WriteLine("Rock Paper Scissors!");
+            Console.WriteLine("----Rock Paper Scissors!----\n");
 
-            Console.WriteLine("ENTER A USERNAME, HUMAN: ");
+            Console.Write("ENTER A USERNAME, HUMAN: ");
             username = Console.ReadLine();
 
          
 
-            Console.WriteLine("Press any key to start...");
+            Console.WriteLine("\nPress any key to start...");
+
                 ScoreData computer = new ScoreData(computerName);
                 ScoreData player = new ScoreData(username);
 
-            Console.ReadKey(true);
+          //  Console.ReadKey(true);
 
 
             Console.WriteLine();
@@ -60,10 +67,10 @@ namespace RPS_game
                
 
                 GameDisplay.Gameplay(userChoiceNum, player, computer);
-                quitOrContinue = InputValidator.CheckStrings("Continue game? (y/n)");
+                quitOrContinue = InputValidator.CheckStrings("\nContinue game? (y/n)");
                 //FileHandling.FileCreation();
             }
-            Console.WriteLine("Bye Thank you for playing!\n");
+            Console.WriteLine("\n\nBye Thank you for playing!\n");
 
             //Console.WriteLine("Human overall score: " +  );
             //Console.WriteLine("Computer overall score: " + );

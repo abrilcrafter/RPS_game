@@ -6,7 +6,7 @@ namespace RPS_game
 {
     internal class GameDisplay
     {
-        public static void Gameplay(int userChoiceNumber, ScoreData player, ScoreData computer)
+        public static async Task Gameplay(int userChoiceNumber, ScoreData player, ScoreData computer)
         {
 
        
@@ -23,24 +23,27 @@ namespace RPS_game
 
             int p_Choice = random.Next(1, 4);
 
+           
+
             string p_ChoiceString = GameMovesNames.GameMovements(p_Choice);
 
+             Thread.Sleep(1000);
 
             Console.WriteLine(computer.userName + " hits: " + p_ChoiceString + "\n");
 
-
+            Console.WriteLine();
             Console.WriteLine(p_ChoiceString + " vs " + userChoiceString);
 
             if (userChoiceNumber == p_Choice)
             {
-                Console.WriteLine("Draw! Continuing..");
-                Console.WriteLine("No totalPoints awarded");
+                Console.WriteLine("\nDraw! Continuing..");
+                Console.WriteLine("NO POINTS AWARDED");
             }
 
             else if (userChoiceNumber == 1 && p_Choice == 3 || userChoiceNumber == 2 && p_Choice == 1 || userChoiceNumber == 3 && p_Choice == 2)
             {
                 player.AddPoint();
-                Console.WriteLine("You win!");
+                Console.WriteLine("YOU WIN!");
                 
      
                Console.WriteLine("Your current win count: " + player.totalPoints);
@@ -50,7 +53,7 @@ namespace RPS_game
             else
             {
                 computer.AddPoint();
-                Console.WriteLine("The program wins!");
+                Console.WriteLine("THE PROGRAM WINS!");
 
                
                Console.WriteLine("Program's current win count: " + computer.totalPoints);

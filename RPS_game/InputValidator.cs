@@ -55,7 +55,7 @@ namespace RPS_game
         {
             while (true)
             {
-                Console.WriteLine(prompt);
+                Console.Write(prompt);
                 string choice = Console.ReadLine().Trim();
 
 
